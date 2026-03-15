@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioATA</title>
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+  <body>
+    <div class="busca-container">
+    <input type="text" id="campoBusca" placeholder="Pesquisar espécie (ex: Lobo, Ipê...)" onkeyup="pesquisar()">
+    <i class="fas fa-search"></i> </div>
+   <main>
+    <aside class="fauna">
+
+     <h2>Fauna</h2>
+
+         <div class="card" onclick="mostrarBio('capivara')">
+          <img src="imagens/Capivara.jpg.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Capivara</p>
+         </div>
+         <div class="card" onclick="mostrarBio('loboGuara')">
+          <img src="imagens/Lobo-Guará.jpg.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Lobo-Guará</p>
+         </div>
+         <div class="card" onclick="mostrarBio('Tuiuiú')">
+          <img src="imagens/Tuiuiú.jpg" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Tuiuiú</p>
+         </div>
+         <div class="card" onclick="mostrarBio('araraCaninde')">
+          <img src="imagens/Canindé.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Arara-Caninde</p>
+         </div>
+         <div class="card" onclick="mostrarBio('oncaParda')">
+          <img src="imagens/OnçaParda.avif" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Onça-Parda</p>
+         </div>
+         <div class="card" onclick="mostrarBio('tamandua')">
+          <img src="imagens/tamandua.jpg">
+          <p class="nome-card">Tamanduá-Bandeira</p>
+         </div>
+         <div class="card" onclick="mostrarBio('tatu')">
+          <img src="imagens/tatu.jpg">
+          <p class="nome-card">Tatu-Galinha</p>
+         </div>
+
+    </aside>
+     <article id="detalhes">
+        <h1>Bem-vindo ao BioATA</h1>
+        <h2>Conectando Araçatuba à sua natureza. ​</h2>
+    <p>Explore a rica biodiversidade de Araçatuba. Clique nos animais ou plantas ao lado para conhecer mais sobre cada espécie.</p>
+    <img src="imagens/capa-aracatuba.jpg" class="img-capa">
+    <p>O <strong>BioATA</strong> não é apenas um site, é uma ferramenta de transformação social. Ao dar nome e rosto à nossa fauna e flora, criamos 
+        um sentimento de posse e proteção.
+         O futuro sustentável de Araçatuba começa quando aprendemos a olhar para o nosso próprio quintal.</p>
+         
+     </article>
+     <aside class="flora">
+        <h2>Flora</h2>
+
+        <div class="card" onclick="mostrarBio('ipeAmarelo')">
+          <img src="imagens/ipe-amarelo.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
+          <p class="nome-card">Ipê-Amarelo</p>
+        </div>
+        <div class="card" onclick="mostrarBio('oiti')">
+          <img src="imagens/oiti.jpg">
+          <p class="nome-card">Oiti</p>
+          </div>
+         <div class="card" onclick="mostrarBio('araca')">
+          <img src="imagens/araça.jpg">
+          <p class="nome-card">Araçá</p>
+         </div>
+         <div class="card" onclick="mostrarBio('paineira')">
+          <img src="imagens/paineira.jpg">
+          <p class="nome-card">Paineira</p>
+         </div>
+         <div class="card" onclick="mostrarBio('flamboyant')">
+          <img src="imagens/flamboyant.jpg">
+          <p class="nome-card">Flamboyant</p>
+         </div>
+         <div class="card" onclick="mostrarBio('ipe_rosa')">
+          <img src="imagens/ipe-rosa.jpg">
+          <p class="nome-card">Ipê-Rosa</p>
+         </div>
+         <div class="card" onclick="mostrarBio('jacaranda')">
+          <img src="imagens/jacaranda.jpg">
+          <p class="nome-card">Jacarandá</p>
+         </div>
+
+        </aside>
+    </main> 
+  <script src="script.js"></script>
+  <footer>
+    <div class="footer-content">
+        <p><strong>BioATA</strong> - Catálogo Digital da Biodiversidade de Araçatuba e Região</p>
+        <p>Desenvolvido por Vinicius Ryan, Lucas,...</p>
+        <div class="social-links">
+            <span>🌿 Preserve a Natureza</span> | <span>🐾 Proteja os Animais</span>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>

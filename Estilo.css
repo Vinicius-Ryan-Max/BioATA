@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Isso ajuda a não quebrar o tamanho das caixas */
+}
+/* Configuração do corpo da página */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+/* O Pai que segura as 3 colunas kkkk*/
+main {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Isso aqui é o que faz as cores descerem até o chão */
+    min-height: 100vh;    /* Garante que o fundo ocupe a tela toda */              /* Deixando 0, as cores encostam uma na outra como você gostou */
+    background-color: white;
+}
+
+/* Coluna da Fauna (Esquerda)*/
+.fauna {
+    width: 500px;             /* Largura fixa pros cards não achatarem */
+    background-color: #5D4037;
+    color: white;
+    padding: 20px;
+    /* Removemos o height fixo */
+}
+
+/* Painel Central (Informações)*/
+#detalhes {
+    width: 50%;
+    background-color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    /* CONFIGURAÇÃO PARA TRAVAR E ESTICAR */
+    position: sticky;
+    top: 20px; 
+    /* A altura abaixo faz ele ocupar quase a tela toda e travar */
+    height: calc(100vh - 40px); 
+    overflow-y: auto; /* Se o texto do animal for muito grande, cria um scroll só dentro da bolha branca */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Coluna da Flora (Direita)*/
+.flora {
+   width: 500px;             /* Largura fixa igual à da esquerda */
+    background-color: #8BC34A;
+    color: white;
+    padding: 20px;
+}
+/* Isso faz com que todas as fotos de animais e plantas 
+fiquem do mesmo tamanho e não "estourem" a coluna */
+.card img {
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    display: block;
+    object-position: top;
+    border-radius: 15px 15px 0 0; /* Arredonda só em cima para não bugar com o nome embaixo */
+}
+/* Efeito para os cards que estão dentro da FAUNA (vão brilhar em marrom claro) */
+.fauna .card:hover {
+    background-color: #795548; 
+    transform: scale(1.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* Efeito para os cards que estão dentro da FLORA (vão brilhar em verde claro) */
+.flora .card:hover {
+    background-color: #9ccc65; /* Um verde mais clarinho que o fundo */
+    transform: scale(1.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.card {
+    width: 100%;
+    height: auto;        /* Deixa o card crescer conforme o que tem dentro */
+    min-height: 150px;   /* Garante que ele não fique nanico se a imagem sumir */
+    margin-bottom: 30px; /* Mais espaço entre um bicho e outro */
+    background-color: rgba(255,255,255,0.05); /* Um fundinho bem sutil */
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* novo */
+    transition: transform 0.3s, opacity 0.3s, display 0.3s;
+    border: 2px solid rgba(255,255,255,0.2);
+    overflow: hidden;    /* Corta a imagem se ela tentar sair das bordas arredondadas */
+    display: flex;
+    flex-direction: column; /* Coloca a foto em cima e o texto embaixo */
+}
+
+.card:hover {
+   transform: translateY(-5px) scale(1.02); /* Sobe um pouquinho quando passa o mouse */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* Sombra aumenta no hover */
+}
+.nome-card {
+    display: block;      /* Faz o nome ocupar a linha toda */
+    color: white;        /* Cor branca para contrastar com o fundo marrom/verde */
+    font-weight: bold;   /* Deixa a letra mais grossinha */
+    text-align: center;  /* Centraliza o nome embaixo da foto */
+    padding: 10px 0;     /* Dá um espaço interno para não grudar nas bordas */
+    font-size: 16px;     /* Aumenta um pouco o tamanho da letra */
+    font-family: sans-serif; /* Tira aquela fonte padrão com serifa que é mais feinha */
+}
+html {
+    scroll-behavior: smooth;
+}
+.img-capa {
+    width: 100%;
+    max-width: 850px;        /* Evita que ela fique gigante em telas muito largas */
+    margin: 40px auto;       /* Dá um respiro em cima e embaixo */
+    display: block;
+    
+    /* A MOLDURA */
+    border-radius: 15px;
+    padding: 8px;            /* Espaço entre a foto e a borda */
+    background-color: #fff;  /* Fundo branco da moldura */
+    border: 6px solid #f0f0f0; /* Borda externa marrom (cor da Fauna) */
+    
+    /* EFEITOS VISUAIS */
+    box-shadow:0 20px 40px rgba(0,0,0,0.15); /* Sombra para dar profundidade */
+    opacity: 1;            /* Um pouquinho de transparência para ficar suave */
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.img-capa:hover {
+    transform: scale(1.02);  /* Dá um leve zoom quando passa o mouse */
+    opacity: 1;              /* Fica 100% nítida no foco */
+}
+/* Título Principal */
+#detalhes h1 {
+    font-size: 38px;
+    color: #2e7d32; /* Verde floresta escuro */
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #9ccc65; /* Uma linhazinha embaixo do nome */
+}
+
+/* Subtítulo */
+#detalhes h2 {
+    font-size: 20px;
+    color: #5d4037; /* Marrom terra */
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* Parágrafos */
+#detalhes p {
+    font-size: 18px;
+    line-height: 1.8;   /* Mais espaço entre linhas = mais fácil de ler */
+    color: #444;
+    text-align: justify; /* Alinhamento elegante nas laterais */
+    margin-bottom: 25px;
+}
+
+/* Destaque no texto (O BioATA em negrito) */
+#detalhes strong {
+    color: #2e7d32;
+    border-bottom: 2px solid #9ccc65; /* Uma linhazinha embaixo do nome */
+}
+.nome-cientifico {
+    font-size: 22px;        /* Nome científico maior */
+    color: #888;           /* Um cinza elegante */
+    font-style: italic;    /* Regra de biologia: nome científico sempre em itálico */
+    margin-top: -10px;     /* Traz o nome para perto do título */
+    margin-bottom: 30px;
+    display: block;
+    font-weight: 300;      /* Letra mais fininha para contrastar com o título grosso */
+}
+.busca-container {
+    width: 60%;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#campoBusca {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 50px; /* Barra bem redondinha */
+    border: 2px solid #2e7d32;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+#campoBusca:focus {
+    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+    border-color: #9ccc65;
+}
+/* Container da área de comentários */
+.secao-comentarios {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre os campos */
+}
+
+/* Estilo dos inputs e textarea */
+.secao-comentarios input, 
+.secao-comentarios textarea {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+.secao-comentarios textarea {
+    height: 80px;
+    resize: none; /* Impede o usuário de deformar a caixa */
+}
+
+/* Botões (Enviar e Like) */
+.secao-comentarios button, #btn-like {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: #2e7d32;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#btn-like {
+    background-color: #f0f0f0;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+#btn-like.curtido {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* O card do comentário que você postou */
+.comentario {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 15px;
+    border-left: 6px solid #2e7d32;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+/* Animação de batida de coração */
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#btn-like.curtido {
+    background-color: #e91e63;
+    color: white;
+    animation: pulsar 0.4s ease-in-out; /* O pulo acontece aqui */
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
+}
+/* Quando a tela for menor que 1000px (Tablets e Celulares) */
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column; /* Empilha as colunas uma embaixo da outra */
+        align-items: center;
+    }
+
+    aside.fauna, aside.flora {
+        width: 95%; /* As laterais agora ocupam a largura quase toda */
+        order: 2;   /* Joga os cards para baixo do painel de detalhes */
+        display: flex;
+        flex-wrap: wrap; /* Faz os cards ficarem um do lado do outro no mobile */
+        justify-content: center;
+        position: static; /* Tira o "sticky" para poder rolar a página toda */
+    }
+
+    #detalhes {
+        width: 95%;
+        order: 1; /* O painel de detalhes aparece primeiro */
+        position: static;
+        min-height: auto;
+        margin: 10px 0;
+    }
+
+    .busca-container {
+        width: 90%;
+    }
+    footer {
+    background-color: #2e7d32; /* Verde escuro para combinar */
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    border-top: 5px solid #9ccc65;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.social-links {
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+}
