@@ -130,7 +130,6 @@ function mostrarBio(id) {
     const painel = document.getElementById('detalhes');
     const item = bancoDeDados[id]; 
 
-    // Abrimos a crase aqui no começo
     painel.innerHTML = `
         <h2 style="color: ${item.cor}; font-size: 45px; margin-bottom: 5px;">${item.titulo}</h2>
         <p class="nome-cientifico">${item.cientifico}</p>
@@ -138,12 +137,11 @@ function mostrarBio(id) {
         <img src="imagens/${item.imagem}" style="width: 80%; border-radius: 15px; margin-top: 10px;">
 
         <div class="interacao">
-             <button id="btn-like" onclick="darLike()">
+             <button id="btn-like" onclick="darLike('${id}')">
                 <span id="icone-coracao">❤</span> <span id="contagem-likes">0</span>
              </button>
         </div>
 
-        
         <div style="text-align: left; margin-top: 20px;">
             <p><strong>Descrição:</strong> ${item.desc}</p>
             <p><strong>Onde encontrar em Araçatuba:</strong> ${item.onde}</p>
@@ -154,14 +152,51 @@ function mostrarBio(id) {
             <h3>Deixe um recado:</h3>
             <input type="text" id="nome-usuario" placeholder="Seu nome">
             <textarea id="texto-comentario" placeholder="O que você acha?"></textarea>
-            <button onclick="postarComentario()">Enviar</button>
+            <button onclick="postarComentario('${id}')">Enviar</button>
             <div id="lista-comentarios"></div>
         </div>
 
         <button onclick="location.reload()" style="margin-top:20px; cursor:pointer;">Início</button>
-    `; // Fechamos a crase só aqui no final!
+    `;
+
+    // --- AGORA A MÁGICA PARA CARREGAR OS DADOS ---
+    carregarDadosFirebase(id);
     
     window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Nova função para buscar os dados sempre que trocar de animal/planta
+function carregarDadosFirebase(id) {
+    if (!window.fb) return;
+
+    // 1. Carrega os Likes específicos desse ID
+    window.fb.onSnapshot(window.fb.doc(window.db, "likes", id), (doc) => {
+        const spanLikes = document.getElementById('contagem-likes');
+        if (doc.exists() && spanLikes) {
+            spanLikes.innerText = doc.data().contagem || 0;
+        }
+    });
+
+    // 2. Carrega os Comentários específicos desse ID
+    const q = window.fb.query(
+        window.fb.collection(window.db, "comentarios"), 
+        window.fb.where("especieId", "==", id),
+        window.fb.orderBy("dataEnvio", "desc")
+    );
+
+    window.fb.onSnapshot(q, (snapshot) => {
+        let lista = document.getElementById('lista-comentarios');
+        if (!lista) return;
+        lista.innerHTML = "";
+        snapshot.forEach((doc) => {
+            let dados = doc.data();
+            lista.innerHTML += `
+                <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32;">
+                    <strong>${dados.nome}:</strong>
+                    <p style="margin: 5px 0 0 0;">${dados.texto}</p>
+                </div>`;
+        });
+    });
 }
 function pesquisar() {
     // 1. Pega o valor digitado e transforma em minúsculo
