@@ -183,35 +183,66 @@ function pesquisar() {
         }
     });
 }
-let curtidas = 0;
-function darLike() {
-    curtidas++;
+// Substitua sua função darLike por esta:
+async function darLike() {
     const btn = document.getElementById('btn-like');
-    document.getElementById('contagem-likes').innerText = curtidas;
-    btn.classList.toggle('curtido'); // Muda a cor para vermelho
+    btn.classList.toggle('curtido');
+
+    // Usamos o ID "geral" para somar os likes de todo o site
+    const docRef = window.fb.doc(window.db, "interacoes", "likes-gerais");
+
+    try {
+        await window.fb.updateDoc(docRef, {
+            contagem: window.fb.increment(1)
+        });
+    } catch (e) {
+        // Se for o primeiro like do site, ele cria o registro
+        await window.fb.setDoc(docRef, { contagem: 1 });
+    }
 }
-// FUNÇÃO DOS COMENTÁRIOS
-function postarComentario() {
+
+// Isso aqui serve para MOSTRAR os likes na tela assim que o site abre
+window.fb.onSnapshot(window.fb.doc(window.db, "interacoes", "likes-gerais"), (doc) => {
+    if (doc.exists()) {
+        document.getElementById('contagem-likes').innerText = doc.data().contagem;
+    }
+});
+// Substitua sua função postarComentario por esta:
+async function postarComentario() {
     let nome = document.getElementById('nome-usuario').value;
     let texto = document.getElementById('texto-comentario').value;
     
     if(nome && texto) {
-        let lista = document.getElementById('lista-comentarios');
-        
-        // Cria o HTML do novo comentário
-        let novoComentario = `
-            <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
-                <strong>${nome}:</strong>
-                <p style="margin: 5px 0 0 0;">${texto}</p>
-            </div>`;
-            
-        // Adiciona o comentário na lista
-        lista.innerHTML = novoComentario + lista.innerHTML; 
-        
-        // Limpa os campos para o próximo comentário
+        // ENVIA PARA O FIREBASE
+        await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
+            nome: nome,
+            texto: texto,
+            dataEnvio: new Date() // Salva o horário do comentário
+        });
+
+        // Limpa os campos
         document.getElementById('nome-usuario').value = "";
         document.getElementById('texto-comentario').value = "";
     } else {
         alert("Ops! Digite seu nome e uma mensagem antes de enviar.");
     }
 }
+
+// ESSE CÓDIGO ABAIXO É A MÁGICA: Ele fica vigiando o banco. 
+// Sempre que alguém comentar, ele desenha na tela de todo mundo na hora!
+const q = window.fb.query(window.fb.collection(window.db, "comentarios"), window.fb.orderBy("dataEnvio", "desc"));
+
+window.fb.onSnapshot(q, (snapshot) => {
+    let lista = document.getElementById('lista-comentarios');
+    lista.innerHTML = ""; // Limpa para não duplicar
+
+    snapshot.forEach((doc) => {
+        let dados = doc.data();
+        let novoComentario = `
+            <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
+                <strong>${dados.nome}:</strong>
+                <p style="margin: 5px 0 0 0;">${dados.texto}</p>
+            </div>`;
+        lista.innerHTML += novoComentario;
+    });
+});
