@@ -89,7 +89,6 @@
 
         </aside>
     </main> 
-  <script src="script.js"></script>
   <footer>
     <div class="footer-content">
         <p><strong>BioATA</strong> - Catálogo Digital da Biodiversidade de Araçatuba e Região</p>
@@ -99,5 +98,30 @@
         </div>
     </div>
 </footer>
+<script type="module">
+  // 1. Importações (Adicionamos a linha do firestore aqui)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+  // 2. Sua configuração (que você já tem)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDya277YIRpyfK7KVjvAbhdEhgqQpRJgRo",
+    authDomain: "bioata.firebaseapp.com",
+    projectId: "bioata",
+    storageBucket: "bioata.firebasestorage.app",
+    messagingSenderId: "959473833698",
+    appId: "1:959473833698:web:80963a8369673c52a770bb"
+  };
+
+  // 3. Inicialização
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app); // ESTA É A LINHA QUE ATIVA O BANCO
+
+  // Tornar o 'db' acessível para o seu outro arquivo script.js
+  window.db = db;
+  window.firestore = { collection, addDoc, getDocs, doc, updateDoc, increment, onSnapshot };
+</script>
+<script src="script.js"></script>
+
   </body>
 </html>
