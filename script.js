@@ -218,26 +218,28 @@ function pesquisar() {
         }
     });
 }
-// --- PARTE DAS CURTIDAS ---
-async function darLike() {
+// --- NOVA PARTE DAS CURTIDAS (SUBSTITUA A SUA POR ESTA) ---
+async function darLike(id) {
+    if (!window.fb) return; 
+
     const btn = document.getElementById('btn-like');
     btn.classList.toggle('curtido');
 
-    if (!window.fb) return; // Segurança: se o Firebase não carregou, não faz nada
-
-    const docRef = window.fb.doc(window.db, "interacoes", "likes-gerais");
+    // Agora salva na pasta "likes" usando o nome do bicho (id)
+    const docRef = window.fb.doc(window.db, "likes", id);
 
     try {
         await window.fb.updateDoc(docRef, {
             contagem: window.fb.increment(1)
         });
     } catch (e) {
+        // Se for o primeiro like desse bicho, cria o registro
         await window.fb.setDoc(docRef, { contagem: 1 });
     }
 }
 
-// --- PARTE DOS COMENTÁRIOS ---
-async function postarComentario() {
+// --- NOVA PARTE DOS COMENTÁRIOS (SUBSTITUA A SUA POR ESTA) ---
+async function postarComentario(id) {
     let nome = document.getElementById('nome-usuario').value;
     let texto = document.getElementById('texto-comentario').value;
     
@@ -245,6 +247,7 @@ async function postarComentario() {
         if (!window.fb) return;
 
         await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
+            especieId: id, // <--- ISSO VINCULA O COMENTÁRIO AO BICHO CERTO
             nome: nome,
             texto: texto,
             dataEnvio: new Date()
