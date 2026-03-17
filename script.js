@@ -183,12 +183,13 @@ function pesquisar() {
         }
     });
 }
-// Substitua sua função darLike por esta:
+// --- PARTE DAS CURTIDAS ---
 async function darLike() {
     const btn = document.getElementById('btn-like');
     btn.classList.toggle('curtido');
 
-    // Usamos o ID "geral" para somar os likes de todo o site
+    if (!window.fb) return; // Segurança: se o Firebase não carregou, não faz nada
+
     const docRef = window.fb.doc(window.db, "interacoes", "likes-gerais");
 
     try {
@@ -196,31 +197,24 @@ async function darLike() {
             contagem: window.fb.increment(1)
         });
     } catch (e) {
-        // Se for o primeiro like do site, ele cria o registro
         await window.fb.setDoc(docRef, { contagem: 1 });
     }
 }
 
-// Isso aqui serve para MOSTRAR os likes na tela assim que o site abre
-window.fb.onSnapshot(window.fb.doc(window.db, "interacoes", "likes-gerais"), (doc) => {
-    if (doc.exists()) {
-        document.getElementById('contagem-likes').innerText = doc.data().contagem;
-    }
-});
-// Substitua sua função postarComentario por esta:
+// --- PARTE DOS COMENTÁRIOS ---
 async function postarComentario() {
     let nome = document.getElementById('nome-usuario').value;
     let texto = document.getElementById('texto-comentario').value;
     
     if(nome && texto) {
-        // ENVIA PARA O FIREBASE
+        if (!window.fb) return;
+
         await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
             nome: nome,
             texto: texto,
-            dataEnvio: new Date() // Salva o horário do comentário
+            dataEnvio: new Date()
         });
 
-        // Limpa os campos
         document.getElementById('nome-usuario').value = "";
         document.getElementById('texto-comentario').value = "";
     } else {
@@ -228,21 +222,40 @@ async function postarComentario() {
     }
 }
 
-// ESSE CÓDIGO ABAIXO É A MÁGICA: Ele fica vigiando o banco. 
-// Sempre que alguém comentar, ele desenha na tela de todo mundo na hora!
-const q = window.fb.query(window.fb.collection(window.db, "comentarios"), window.fb.orderBy("dataEnvio", "desc"));
+// --- FUNÇÃO PARA INICIALIZAR OS "ESCUTADORES" DO BANCO ---
+// Criamos essa função para rodar só depois que o Firebase estiver pronto
+function iniciarBancoDeDados() {
+    if (window.fb && window.db) {
+        // Escutar Likes
+        window.fb.onSnapshot(window.fb.doc(window.db, "interacoes", "likes-gerais"), (doc) => {
+            const spanLikes = document.getElementById('contagem-likes');
+            if (doc.exists() && spanLikes) {
+                spanLikes.innerText = doc.data().contagem;
+            }
+        });
 
-window.fb.onSnapshot(q, (snapshot) => {
-    let lista = document.getElementById('lista-comentarios');
-    lista.innerHTML = ""; // Limpa para não duplicar
+        // Escutar Comentários
+        const q = window.fb.query(window.fb.collection(window.db, "comentarios"), window.fb.orderBy("dataEnvio", "desc"));
+        window.fb.onSnapshot(q, (snapshot) => {
+            let lista = document.getElementById('lista-comentarios');
+            if (!lista) return; // Se não estiver na tela de detalhes, ignora
+            
+            lista.innerHTML = "";
+            snapshot.forEach((doc) => {
+                let dados = doc.data();
+                let novoComentario = `
+                    <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
+                        <strong>${dados.nome}:</strong>
+                        <p style="margin: 5px 0 0 0;">${dados.texto}</p>
+                    </div>`;
+                lista.innerHTML += novoComentario;
+            });
+        });
+    } else {
+        // Se ainda não carregou, tenta de novo em 500ms
+        setTimeout(iniciarBancoDeDados, 500);
+    }
+}
 
-    snapshot.forEach((doc) => {
-        let dados = doc.data();
-        let novoComentario = `
-            <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
-                <strong>${dados.nome}:</strong>
-                <p style="margin: 5px 0 0 0;">${dados.texto}</p>
-            </div>`;
-        lista.innerHTML += novoComentario;
-    });
-});
+// Chama a função pela primeira vez
+iniciarBancoDeDados();

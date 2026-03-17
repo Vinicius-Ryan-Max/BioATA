@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt/BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,11 +99,14 @@
     </div>
 </footer>
 <script type="module">
-  // 1. Importações (Adicionamos a linha do firestore aqui)
+  // 1. Importações completas
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+  import { 
+    getFirestore, collection, addDoc, getDocs, doc, 
+    updateDoc, increment, onSnapshot, query, orderBy, setDoc 
+  } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-  // 2. Sua configuração (que você já tem)
+  // 2. Configuração
   const firebaseConfig = {
     apiKey: "AIzaSyDya277YIRpyfK7KVjvAbhdEhgqQpRJgRo",
     authDomain: "bioata.firebaseapp.com",
@@ -115,11 +118,14 @@
 
   // 3. Inicialização
   const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app); // ESTA É A LINHA QUE ATIVA O BANCO
+  const db = getFirestore(app);
 
-  // Tornar o 'db' acessível para o seu outro arquivo script.js
+  // 4. Compartilhamento (Usando 'fb' para combinar com o script.js)
   window.db = db;
-  window.firestore = { collection, addDoc, getDocs, doc, updateDoc, increment, onSnapshot };
+  window.fb = { 
+    collection, addDoc, getDocs, doc, updateDoc, 
+    increment, onSnapshot, query, orderBy, setDoc 
+  };
 </script>
 <script src="script.js"></script>
 
