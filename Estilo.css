@@ -321,22 +321,25 @@ html {
     opacity: 0.8;
 }
 }
-/* Botão Início bonitão */
-button[onclick="location.reload()"] {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    background-color: #f4f4f4;
-    color: #333;
-    border: 2px solid #2e7d32;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* Agora vai! Estilo forçado para o botão de início */
+#btn-inicio {
+    display: block !important; /* Força a exibição em bloco */
+    margin: 30px auto !important; /* Centraliza de verdade */
+    padding: 12px 30px !important;
+    background-color: #ffffff !important;
+    color: #2e7d32 !important;
+    border: 2px solid #2e7d32 !important;
+    border-radius: 30px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: fit-content !important; /* Ajusta a largura ao texto */
 }
 
-button[onclick="location.reload()"]:hover {
-    background-color: #2e7d32;
-    color: white;
-    transform: scale(1.05);
+#btn-inicio:hover {
+    background-color: #2e7d32 !important;
+    color: white !important;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
