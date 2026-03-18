@@ -156,8 +156,8 @@ function mostrarBio(id) {
             <div id="lista-comentarios"></div>
         </div>
 
-        <button onclick="location.reload()" style="margin-top:20px; cursor:pointer;">Início</button>
-    `;
+       // Troque a linha do botão de início por esta:
+<button id="btn-inicio" onclick="location.reload()">Início</button>
 
     // --- AGORA A MÁGICA PARA CARREGAR OS DADOS ---
     carregarDadosFirebase(id);
