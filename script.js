@@ -11,7 +11,7 @@ const bancoDeDados = {
     loboGuara: {
         titulo: "Lobo-guará",
         cientifico: "Chrysocyon brachyurus",
-        imagem: "Lobo-guará.jpg.webp",
+        imagem: "Lobo-Guara.jpg.webp",
         cor: "#5D4037",
         desc: "É uma espécie de canídeo endêmico da América do Sul.",
         onde: "Áreas rurais e plantações de cana-de-açúcar, ou zonas urbanas próximas a matas.",
@@ -29,7 +29,7 @@ const bancoDeDados = {
     araraCaninde: {
         titulo: "Arara-Canindé",
         cientifico: "Ara ararauna",
-        imagem: "Canindé.webp",
+        imagem: "Caninde.webp",
         cor: "#5D4037",
         desc: "Uma das aves mais belas da nossa região, conhecida pelas cores azul e amarelo vibrantes.",
         onde: "Avenida Brasília, Pompeu de Toledo e em bairros com muitas palmeiras.",
