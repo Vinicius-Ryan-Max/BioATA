@@ -1,133 +1,151 @@
 <!DOCTYPE html>
-<html lang="pt/BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioATA</title>
+    <title>BioATA - Biodiversidade de Araçatuba</title>
+    
     <link rel="stylesheet" href="Estilo.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-  <body>
-    <div class="busca-container">
-    <input type="text" id="campoBusca" placeholder="Pesquisar espécie (ex: Lobo, Ipê...)" onkeyup="pesquisar()">
-    <i class="fas fa-search"></i> </div>
-   <main>
-    <aside class="fauna">
+<body>
 
-     <h2>Fauna</h2>
-
-         <div class="card" onclick="mostrarBio('capivara')">
-          <img src="imagens/Capivara.jpg.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Capivara</p>
-         </div>
-         <div class="card" onclick="mostrarBio('loboGuara')">
-          <img src="imagens/Lobo-Guara.jpg.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Lobo-Guará</p>
-         </div>
-         <div class="card" onclick="mostrarBio('Tuiuiú')">
-          <img src="imagens/Tuiuiú.jpg" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Tuiuiú</p>
-         </div>
-         <div class="card" onclick="mostrarBio('araraCaninde')">
-          <img src="imagens/Caninde.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Arara-Caninde</p>
-         </div>
-         <div class="card" onclick="mostrarBio('oncaParda')">
-          <img src="imagens/OnçaParda.avif" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Onça-Parda</p>
-         </div>
-         <div class="card" onclick="mostrarBio('tamandua')">
-          <img src="imagens/tamandua.jpg">
-          <p class="nome-card">Tamanduá-Bandeira</p>
-         </div>
-         <div class="card" onclick="mostrarBio('tatu')">
-          <img src="imagens/tatu.jpg">
-          <p class="nome-card">Tatu-Galinha</p>
-         </div>
-
-    </aside>
-     <article id="detalhes">
-        <h1>Bem-vindo ao BioATA</h1>
-        <h2>Conectando Araçatuba à sua natureza. ​</h2>
-    <p>Explore a rica biodiversidade de Araçatuba. Clique nos animais ou plantas ao lado para conhecer mais sobre cada espécie.</p>
-    <img src="imagens/capa-aracatuba.jpg" class="img-capa">
-    <p>O <strong>BioATA</strong> não é apenas um site, é uma ferramenta de transformação social. Ao dar nome e rosto à nossa fauna e flora, criamos 
-        um sentimento de posse e proteção.
-         O futuro sustentável de Araçatuba começa quando aprendemos a olhar para o nosso próprio quintal.</p>
-         
-     </article>
-     <aside class="flora">
-        <h2>Flora</h2>
-
-        <div class="card" onclick="mostrarBio('ipeAmarelo')">
-          <img src="imagens/ipe-amarelo.webp" style="width:100%; height:100%; border-radius:15px; object-fit:cover;">
-          <p class="nome-card">Ipê-Amarelo</p>
+    <header>
+        <div class="busca-container">
+            <input type="text" id="campoBusca" placeholder="Pesquisar espécie (ex: Lobo, Ipê...)" onkeyup="pesquisar()">
+            <i class="fas fa-search"></i>
         </div>
-        <div class="card" onclick="mostrarBio('oiti')">
-          <img src="imagens/oiti.jpg">
-          <p class="nome-card">Oiti</p>
-          </div>
-         <div class="card" onclick="mostrarBio('araca')">
-          <img src="imagens/araça.jpg">
-          <p class="nome-card">Araçá</p>
-         </div>
-         <div class="card" onclick="mostrarBio('paineira')">
-          <img src="imagens/paineira.jpg">
-          <p class="nome-card">Paineira</p>
-         </div>
-         <div class="card" onclick="mostrarBio('flamboyant')">
-          <img src="imagens/flamboyant.jpg">
-          <p class="nome-card">Flamboyant</p>
-         </div>
-         <div class="card" onclick="mostrarBio('ipe_rosa')">
-          <img src="imagens/ipe-rosa.jpg">
-          <p class="nome-card">Ipê-Rosa</p>
-         </div>
-         <div class="card" onclick="mostrarBio('jacaranda')">
-          <img src="imagens/jacaranda.jpg">
-          <p class="nome-card">Jacarandá</p>
-         </div>
+    </header>
 
+    <main>
+        <aside class="fauna">
+            <h2>🐾 Fauna</h2>
+
+            <div class="card" onclick="mostrarBio('capivara')">
+                <img src="imagens/Capivara.jpg.webp" alt="Capivara">
+                <p class="nome-card">Capivara</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('loboGuara')">
+                <img src="imagens/Lobo-Guara.jpg.webp" alt="Lobo-Guará">
+                <p class="nome-card">Lobo-Guará</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('Tuiuiú')">
+                <img src="imagens/Tuiuiú.jpg" alt="Tuiuiú">
+                <p class="nome-card">Tuiuiú</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('araraCaninde')">
+                <img src="imagens/Caninde.webp" alt="Arara-Canindé">
+                <p class="nome-card">Arara-Canindé</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('oncaParda')">
+                <img src="imagens/OnçaParda.avif" alt="Onça-Parda">
+                <p class="nome-card">Onça-Parda</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('tamandua')">
+                <img src="imagens/tamandua.jpg" alt="Tamanduá-Bandeira">
+                <p class="nome-card">Tamanduá-Bandeira</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('tatu')">
+                <img src="imagens/tatu.jpg" alt="Tatu-Galinha">
+                <p class="nome-card">Tatu-Galinha</p>
+            </div>
         </aside>
-    </main> 
-  <footer>
-    <div class="footer-content">
-        <p><strong>BioATA</strong> - Catálogo Digital da Biodiversidade de Araçatuba e Região</p>
-        <p>Desenvolvido por Vinicius Ryan, Lucas Aguiar, Rafael Francisco...</p>
-        <div class="social-links">
-            <span>Alunos UNIP</span> | <span>Ciencias Da Computação 2026</span>
+
+        <article id="detalhes">
+            <h1>Bem-vindo ao BioATA</h1>
+            <h2>Conectando Araçatuba à sua natureza.</h2>
+            
+            <p>Explore a rica biodiversidade de Araçatuba. Clique nos animais ou plantas ao lado para conhecer mais sobre cada espécie.</p>
+            
+            <img src="imagens/capa-aracatuba.jpg" class="img-capa" alt="Capa Araçatuba">
+            
+            <p>O <strong>BioATA</strong> não é apenas um site, é uma ferramenta de transformação social. Ao dar nome e rosto à nossa fauna e flora, criamos um sentimento de posse e proteção.</p>
+            <p>O futuro sustentável de Araçatuba começa quando aprendemos a olhar para o nosso próprio quintal.</p>
+        </article>
+
+        <aside class="flora">
+            <h2>🌿 Flora</h2>
+
+            <div class="card" onclick="mostrarBio('ipeAmarelo')">
+                <img src="imagens/ipe-amarelo.webp" alt="Ipê-Amarelo">
+                <p class="nome-card">Ipê-Amarelo</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('oiti')">
+                <img src="imagens/oiti.jpg" alt="Oiti">
+                <p class="nome-card">Oiti</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('araca')">
+                <img src="imagens/araça.jpg" alt="Araçá">
+                <p class="nome-card">Araçá</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('paineira')">
+                <img src="imagens/paineira.jpg" alt="Paineira">
+                <p class="nome-card">Paineira</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('flamboyant')">
+                <img src="imagens/flamboyant.jpg" alt="Flamboyant">
+                <p class="nome-card">Flamboyant</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('ipe_rosa')">
+                <img src="imagens/ipe-rosa.jpg" alt="Ipê-Rosa">
+                <p class="nome-card">Ipê-Rosa</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('jacaranda')">
+                <img src="imagens/jacaranda.jpg" alt="Jacarandá">
+                <p class="nome-card">Jacarandá</p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>BioATA</strong> - Catálogo Digital da Biodiversidade de Araçatuba e Região</p>
+            <p>Desenvolvido por Vinicius Ryan, Lucas Aguiar e Rafael Francisco</p>
+            <div class="social-links">
+                <span>Alunos UNIP Araçatuba</span> | <span>Ciência da Computação 2026</span>
+            </div>
         </div>
-    </div>
-</footer>
-<script type="module">
-  // 1. Importações completas
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-  import { 
-    getFirestore, collection, addDoc, getDocs, doc, 
-    updateDoc, increment, onSnapshot, query, orderBy, setDoc 
-  } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+    </footer>
 
-  // 2. Configuração
-  const firebaseConfig = {
-    apiKey: "AIzaSyDya277YIRpyfK7KVjvAbhdEhgqQpRJgRo",
-    authDomain: "bioata.firebaseapp.com",
-    projectId: "bioata",
-    storageBucket: "bioata.firebasestorage.app",
-    messagingSenderId: "959473833698",
-    appId: "1:959473833698:web:80963a8369673c52a770bb"
-  };
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { 
+            getFirestore, collection, addDoc, getDocs, doc, 
+            updateDoc, increment, onSnapshot, query, orderBy, setDoc 
+        } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-  // 3. Inicialização
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+        const firebaseConfig = {
+            apiKey: "AIzaSyDya277YIRpyfK7KVjvAbhdEhgqQpRJgRo",
+            authDomain: "bioata.firebaseapp.com",
+            projectId: "bioata",
+            storageBucket: "bioata.firebasestorage.app",
+            messagingSenderId: "959473833698",
+            appId: "1:959473833698:web:80963a8369673c52a770bb"
+        };
 
-  // 4. Compartilhamento (Usando 'fb' para combinar com o script.js)
-  window.db = db;
-  window.fb = { 
-    collection, addDoc, getDocs, doc, updateDoc, 
-    increment, onSnapshot, query, orderBy, setDoc 
-  };
-</script>
-<script src="script.js"></script>
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-  </body>
+        window.db = db;
+        window.fb = { 
+            collection, addDoc, getDocs, doc, updateDoc, 
+            increment, onSnapshot, query, orderBy, setDoc 
+        };
+    </script>
+    <script src="script.js"></script>
+
+</body>
 </html>
