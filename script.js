@@ -132,7 +132,7 @@ function mostrarBio(id) {
 
     painel.innerHTML = `
         <h2 style="color: ${item.cor}; font-size: 45px; margin-bottom: 5px;">${item.titulo}</h2>
-        <p class="nome-cientifico">${item.cientifico}</p>
+        <p class="nome-cientifico"><strong>${item.cientifico}</strong></p>
         
         <img src="imagens/${item.imagem}" style="width: 80%; border-radius: 15px; margin-top: 10px;">
 
