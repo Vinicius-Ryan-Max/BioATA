@@ -11,7 +11,7 @@ const bancoDeDados = {
     loboGuara: {
         titulo: "Lobo-guará",
         cientifico: "Chrysocyon brachyurus",
-        imagem: "Lobo-Guara.jpg.webp",
+        imagem: "lobo.webp",
         cor: "#5D4037",
         desc: "É uma espécie de canídeo endêmico da América do Sul.",
         onde: "Áreas rurais e plantações de cana-de-açúcar, ou zonas urbanas próximas a matas.",
@@ -22,9 +22,9 @@ const bancoDeDados = {
         cientifico: "Jabiru mycteria",
         imagem: "Tuiuiú.jpg",
         cor: "#5D4037",
-        desc: "é uma ave ciconiforme da família Ciconiidae. É considerado a ave-símbolo do Pantanal e pode ser encontrado desde o México até o Uruguai, sendo que as maiores populações estão no Pantanal e no Chaco oriental, no Paraguai.",
-        onde: "Apesar de ser a ave-símbolo do Pantanal, o Tuiuiú é um visitante frequente do Rio Tietê em Araçatuba devido às grandes áreas alagadas da nossa região.",
-        curiosidade: "O Tuiuiú Tem uma mancha vermelha no poscoço que nao é so enfeite, quando esta calor ele infla esse papo para ajudar a resfriar o sangue e controlar a temperatura do corpo."
+        desc: "é uma ave ciconiforme da família Ciconiidae. É considerado a ave-símbolo do Pantanal e pode ser encontrado desde o México até o Uruguai.",
+        onde: "Visitor frequente do Rio Tietê em Araçatuba devido às grandes áreas alagadas.",
+        curiosidade: "O Tuiuiú tem uma mancha vermelha no pescoço que ajuda a controlar a temperatura do corpo."
     },
     araraCaninde: {
         titulo: "Arara-Canindé",
@@ -33,7 +33,7 @@ const bancoDeDados = {
         cor: "#5D4037",
         desc: "Uma das aves mais belas da nossa região, conhecida pelas cores azul e amarelo vibrantes.",
         onde: "Avenida Brasília, Pompeu de Toledo e em bairros com muitas palmeiras.",
-        curiosidade: "Elas formam casais para a vida toda. Se você vir duas voando juntas, provavelmente são parceiras fiéis."
+        curiosidade: "Elas formam casais para a vida toda."
     },
     oncaParda: {
         titulo: "Onça-Parda",
@@ -41,17 +41,17 @@ const bancoDeDados = {
         imagem: "OnçaParda.avif",
         cor: "#5D4037",
         desc: "O segundo maior felino das Américas, extremamente ágil e solitária.",
-        onde: "Nas reservas de mata preservada e matas ciliares do Rio Tietê e Rio Aguapeí.",
-        curiosidade: "Diferente da Onça-Pintada, a Parda não ruge; ela emite um som agudo, similar a um miado de gato gigante."
+        onde: "Nas reservas de mata preservada e matas ciliares do Rio Tietê.",
+        curiosidade: "Diferente da Onça-Pintada, a Parda não ruge; ela emite um som agudo."
     },
     tamandua: {
         titulo: "Tamanduá-Bandeira",
         cientifico: "Myrmecophaga tridactyla",
         imagem: "tamandua.jpg",
         cor: "#795548",
-        desc: "O maior dos tamanduás, possui uma cauda que parece uma bandeira e não tem dentes.",
+        desc: "O maior dos tamanduás, possui uma cauda que parece uma bandeira.",
         onde: "Áreas de pastagens e cerrados ao redor de Araçatuba.",
-        curiosidade: "Ele usa suas garras poderosas para abrir formigueiros e sua língua pode medir até 60cm!"
+        curiosidade: "Sua língua pode medir até 60cm!"
     },
     tatu: {
         titulo: "Tatu-Galinha",
@@ -60,72 +60,73 @@ const bancoDeDados = {
         cor: "#8d6e63",
         desc: "Possui uma carapaça protetora e é um excelente escavador.",
         onde: "Comum em áreas rurais e matas ciliares da região.",
-        curiosidade: "Quando se sente ameaçado, ele corre para sua toca ou tenta se enterrar rapidamente, mas não se enrola como uma bola (quem faz isso é o tatu-bola)."
+        curiosidade: "Ele não se enrola como uma bola (quem faz isso é o tatu-bola)."
     },
     ipeAmarelo: {
         titulo: "Ipê-Amarelo",
         cientifico: "Handroanthus albus",
         imagem: "ipe-amarelo.webp",
         cor: "#9ccc65",
-        desc: "Árvore símbolo do Brasil, famosa por sua florada intensa que acontece no inverno.",
-        onde: "Avenidas Pompeu de Toledo, dos Araçás e na região do Alto da Saudade.",
-        curiosidade: "A florada dura poucos dias e acontece justamente quando a árvore perde todas as suas folhas para enfrentar a seca."
+        desc: "Árvore símbolo do Brasil, famosa por sua florada intensa no inverno.",
+        onde: "Avenidas Pompeu de Toledo, dos Araçás e Alto da Saudade.",
+        curiosidade: "A florada dura poucos dias."
     },
     oiti: {
         titulo: "Oiti",
         cientifico: "Licania tomentosa",
         imagem: "oiti.jpg",
         cor: "#9ccc65",
-        desc: "É a árvore mais comum nas calçadas de Araçatuba por causa de sua sombra generosa.",
+        desc: "Árvore mais comum nas calçadas de Araçatuba.",
         onde: "Em quase todas as ruas residenciais da cidade.",
-        curiosidade: "Suas folhas ficam verdes o ano todo, por isso é a favorita para enfrentar o nosso calor de 40°C."
+        curiosidade: "Sua sombra é a favorita para enfrentar os 40°C."
     },
     araca: {
         titulo: "Araçá",
         cientifico: "Psidium cattleianum",
         imagem: "araça.jpg",
         cor: "#9ccc65",
-        desc: "A árvore que deu nome à nossa cidade (Araçatuba significa 'Lugar de muitos Araçás').",
-        onde: "Parque Baguaçu e em quintais antigos de Araçatuba.",
-        curiosidade: "O fruto do Araçá parece uma mini goiaba e é riquíssimo em Vitamina C."
+        desc: "A árvore que deu nome à nossa cidade.",
+        onde: "Parque Baguaçu e quintais antigos.",
+        curiosidade: "O fruto parece uma mini goiaba."
     },
     paineira: {
         titulo: "Paineira-Rosa",
         cientifico: "Ceiba speciosa",
         imagem: "paineira.jpg",
         cor: "#9ccc65",
-        desc: "Uma árvore majestosa que pode atingir até 30 metros de altura.",
-        onde: "Entrada da cidade e em áreas abertas como o recinto da Expô.",
-        curiosidade: "O tronco da paineira jovem é cheio de espinhos para se proteger, e seus frutos soltam uma lã branca chamada paina."
+        desc: "Uma árvore majestosa que pode atingir até 30 metros.",
+        onde: "Entrada da cidade e recinto da Expô.",
+        curiosidade: "Seus frutos soltam uma lã branca chamada paina."
     },
     flamboyant: {
         titulo: "Flamboyant",
         cientifico: "Delonix regia",
         imagem: "flamboyant.jpg",
         cor: "#9ccc65",
-        desc: "Uma das árvores mais coloridas do mundo, com uma copa imensa em formato de guarda-chuva.",
-        onde: "Muito comum em praças de Araçatuba e na arborização de escolas e clubes.",
-        curiosidade: "O nome vem do francês e significa 'flamejante', por causa da cor vermelha viva de suas flores que cobrem toda a árvore."
+        desc: "Uma das árvores mais coloridas do mundo.",
+        onde: "Praças de Araçatuba e escolas.",
+        curiosidade: "O nome significa 'flamejante'."
     },
     ipe_rosa: {
         titulo: "Ipê-Rosa",
         cientifico: "Handroanthus heptaphyllus",
         imagem: "ipe-rosa.jpg",
         cor: "#ec407a",
-        desc: "Uma das árvores mais bonitas do Brasil, floresce entre junho e agosto.",
-        onde: "Muito utilizado no paisagismo urbano em Araçatuba.",
-        curiosidade: "Sua floração dura pouco tempo, geralmente entre 7 a 10 dias, criando um tapete rosa no chão."
+        desc: "Floresce entre junho e agosto.",
+        onde: "Muito utilizado no paisagismo urbano.",
+        curiosidade: "Cria um tapete rosa no chão."
     },
     jacaranda: {
         titulo: "Jacarandá-Mimoso",
         cientifico: "Jacaranda mimosifolia",
         imagem: "jacaranda.jpg",
         cor: "#7e57c2",
-        desc: "Árvore de porte médio com flores roxas/azuladas em formato de sino.",
-        onde: "Presente em várias praças e calçadas da cidade.",
-        curiosidade: "Apesar de muito comum no Brasil, ele é originalmente nativo da Argentina e Bolívia."
-    },
-}
+        desc: "Árvore de porte médio com flores roxas.",
+        onde: "Presente em várias praças da cidade.",
+        curiosidade: "Originalmente nativo da Argentina e Bolívia."
+    }
+};
+
 function mostrarBio(id) {
     const painel = document.getElementById('detalhes');
     const item = bancoDeDados[id]; 
@@ -156,20 +157,16 @@ function mostrarBio(id) {
             <div id="lista-comentarios"></div>
         </div>
 
-       // Troque a linha do botão de início por esta:
-<button id="btn-inicio" onclick="location.reload()">Início</button>
+        <button id="btn-inicio" onclick="location.reload()" style="display: block; margin: 30px auto; padding: 12px 30px; background-color: white; color: #2e7d32; border: 2px solid #2e7d32; border-radius: 30px; font-weight: bold; cursor: pointer;">Início</button>
+    `;
 
-    // --- AGORA A MÁGICA PARA CARREGAR OS DADOS ---
     carregarDadosFirebase(id);
-    
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Nova função para buscar os dados sempre que trocar de animal/planta
 function carregarDadosFirebase(id) {
     if (!window.fb) return;
 
-    // 1. Carrega os Likes específicos desse ID
     window.fb.onSnapshot(window.fb.doc(window.db, "likes", id), (doc) => {
         const spanLikes = document.getElementById('contagem-likes');
         if (doc.exists() && spanLikes) {
@@ -177,7 +174,6 @@ function carregarDadosFirebase(id) {
         }
     });
 
-    // 2. Carrega os Comentários específicos desse ID
     const q = window.fb.query(
         window.fb.collection(window.db, "comentarios"), 
         window.fb.where("especieId", "==", id),
@@ -191,109 +187,49 @@ function carregarDadosFirebase(id) {
         snapshot.forEach((doc) => {
             let dados = doc.data();
             lista.innerHTML += `
-                <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32;">
+                <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
                     <strong>${dados.nome}:</strong>
                     <p style="margin: 5px 0 0 0;">${dados.texto}</p>
                 </div>`;
         });
     });
 }
-function pesquisar() {
-    // 1. Pega o valor digitado e transforma em minúsculo
-    let input = document.getElementById('campoBusca').value.toLowerCase();
-    
-    // 2. Pega todos os cards de Fauna e Flora
-    let cards = document.querySelectorAll('.card');
 
-    // 3. Percorre cada card
+function pesquisar() {
+    let input = document.getElementById('campoBusca').value.toLowerCase();
+    let cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        // Pega o nome que está dentro do parágrafo do card
         let nome = card.querySelector('.nome-card').innerText.toLowerCase();
-        
-        // 4. Se o nome contiver o que foi digitado, mostra. Se não, esconde.
-        if (nome.includes(input)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+        card.style.display = nome.includes(input) ? "block" : "none";
     });
 }
-// --- NOVA PARTE DAS CURTIDAS (SUBSTITUA A SUA POR ESTA) ---
+
 async function darLike(id) {
     if (!window.fb) return; 
-
     const btn = document.getElementById('btn-like');
     btn.classList.toggle('curtido');
-
-    // Agora salva na pasta "likes" usando o nome do bicho (id)
     const docRef = window.fb.doc(window.db, "likes", id);
-
     try {
-        await window.fb.updateDoc(docRef, {
-            contagem: window.fb.increment(1)
-        });
+        await window.fb.updateDoc(docRef, { contagem: window.fb.increment(1) });
     } catch (e) {
-        // Se for o primeiro like desse bicho, cria o registro
         await window.fb.setDoc(docRef, { contagem: 1 });
     }
 }
 
-// --- NOVA PARTE DOS COMENTÁRIOS (SUBSTITUA A SUA POR ESTA) ---
 async function postarComentario(id) {
     let nome = document.getElementById('nome-usuario').value;
     let texto = document.getElementById('texto-comentario').value;
-    
     if(nome && texto) {
         if (!window.fb) return;
-
         await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
-            especieId: id, // <--- ISSO VINCULA O COMENTÁRIO AO BICHO CERTO
+            especieId: id,
             nome: nome,
             texto: texto,
             dataEnvio: new Date()
         });
-
         document.getElementById('nome-usuario').value = "";
         document.getElementById('texto-comentario').value = "";
     } else {
         alert("Ops! Digite seu nome e uma mensagem antes de enviar.");
     }
 }
-
-// --- FUNÇÃO PARA INICIALIZAR OS "ESCUTADORES" DO BANCO ---
-// Criamos essa função para rodar só depois que o Firebase estiver pronto
-function iniciarBancoDeDados() {
-    if (window.fb && window.db) {
-        // Escutar Likes
-        window.fb.onSnapshot(window.fb.doc(window.db, "interacoes", "likes-gerais"), (doc) => {
-            const spanLikes = document.getElementById('contagem-likes');
-            if (doc.exists() && spanLikes) {
-                spanLikes.innerText = doc.data().contagem;
-            }
-        });
-
-        // Escutar Comentários
-        const q = window.fb.query(window.fb.collection(window.db, "comentarios"), window.fb.orderBy("dataEnvio", "desc"));
-        window.fb.onSnapshot(q, (snapshot) => {
-            let lista = document.getElementById('lista-comentarios');
-            if (!lista) return; // Se não estiver na tela de detalhes, ignora
-            
-            lista.innerHTML = "";
-            snapshot.forEach((doc) => {
-                let dados = doc.data();
-                let novoComentario = `
-                    <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
-                        <strong>${dados.nome}:</strong>
-                        <p style="margin: 5px 0 0 0;">${dados.texto}</p>
-                    </div>`;
-                lista.innerHTML += novoComentario;
-            });
-        });
-    } else {
-        // Se ainda não carregou, tenta de novo em 500ms
-        setTimeout(iniciarBancoDeDados, 500);
-    }
-}
-
-// Chama a função pela primeira vez
-iniciarBancoDeDados();
