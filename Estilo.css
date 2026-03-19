@@ -14,21 +14,94 @@ html {
 body {
     overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
+    background-color: #fcfcfc;
 }
 
 /* ============================================================
-   2. ESTRUTURA PRINCIPAL (LAYOUT)
+   2. CABEÇALHO E BUSCA (ESTILO PORTAL)
+   ============================================================ */
+header {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f8e9 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 10px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #8BC34A;
+}
+
+.busca-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 30px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-site {
+    height: 75px;
+    width: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.logo-site:hover {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+.search-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    max-width: 600px;
+}
+
+#campoBusca {
+    width: 100%;
+    padding: 15px 50px 15px 25px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 2px solid #2e7d32;
+    background-color: white;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+#campoBusca:focus {
+    border-color: #8BC34A;
+    box-shadow: 0 0 15px rgba(139, 195, 74, 0.2);
+    outline: none;
+}
+
+.search-wrapper .fa-search {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2e7d32;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+/* ============================================================
+   3. ESTRUTURA PRINCIPAL (LAYOUT)
    ============================================================ */
 main {
     display: flex;
     justify-content: center;
     align-items: stretch;
     min-height: 100vh;
-    background-color: white;
 }
 
-/* Colunas Laterais */
 .fauna {
     width: 500px;
     background-color: #5D4037;
@@ -43,7 +116,6 @@ main {
     padding: 20px;
 }
 
-/* Painel Central de Informações */
 #detalhes {
     width: 50%;
     background-color: white;
@@ -52,63 +124,17 @@ main {
     border-radius: 20px;
     margin: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    
-    /* Trava o painel enquanto rola as laterais */
     position: sticky;
-    top: 20px;
-    height: calc(100vh - 40px);
+    top: 100px; /* Ajustado para não bater no novo header */
+    height: calc(100vh - 120px);
     overflow-y: auto;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 /* ============================================================
-   3. BUSCA E CABEÇALHO
-   ============================================================ */
-.busca-container {
-    width: 60%;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-}
-
-#campoBusca {
-    width: 100%;
-    padding: 15px 25px;
-    font-size: 18px;
-    border-radius: 50px;
-    border: 2px solid #2e7d32;
-    outline: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-#campoBusca:focus {
-    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
-    border-color: #9ccc65;
-}
-
-.img-capa {
-    width: 100%;
-    max-width: 850px;
-    margin: 40px auto;
-    display: block;
-    border-radius: 15px;
-    padding: 8px;
-    background-color: #fff;
-    border: 6px solid #f0f0f0;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    transition: transform 0.3s;
-}
-
-.img-capa:hover {
-    transform: scale(1.02);
-}
-
-/* ============================================================
-   4. CARDS (LISTAGEM)
+   4. CARDS E CONTEÚDO
    ============================================================ */
 .card {
     width: 100%;
@@ -128,7 +154,6 @@ main {
     width: 100% !important;
     height: 150px !important;
     object-fit: cover !important;
-    object-position: top;
     border-radius: 15px 15px 0 0;
 }
 
@@ -141,42 +166,31 @@ main {
     font-size: 16px;
 }
 
-/* Hovers específicos */
 .fauna .card:hover { background-color: #795548; transform: translateY(-5px); }
 .flora .card:hover { background-color: #9ccc65; transform: translateY(-5px); }
 
+.img-capa {
+    width: 100%;
+    max-width: 850px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 15px;
+    padding: 8px;
+    background-color: #fff;
+    border: 6px solid #f0f0f0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 /* ============================================================
-   5. TEXTOS DA BIO (DETALHES)
+   5. TEXTOS E COMENTÁRIOS
    ============================================================ */
 #detalhes h1 {
     font-size: 38px;
     color: #2e7d32;
     margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 2px solid #9ccc65;
 }
 
-.nome-cientifico {
-    font-size: 22px;
-    color: #888;
-    font-style: italic;
-    margin-top: -10px;
-    margin-bottom: 30px;
-    font-weight: 300;
-}
-
-#detalhes p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #444;
-    text-align: justify;
-    margin-bottom: 25px;
-}
-
-/* ============================================================
-   6. INTERAÇÕES (LIKES E COMENTÁRIOS)
-   ============================================================ */
 .secao-comentarios {
     width: 100%;
     max-width: 500px;
@@ -191,11 +205,9 @@ main {
     padding: 12px;
     border: 2px solid #ddd;
     border-radius: 10px;
-    font-size: 16px;
 }
 
-/* Botões */
-.secao-comentarios button, #btn-like {
+.secao-comentarios button {
     padding: 10px 20px;
     border: none;
     border-radius: 25px;
@@ -203,27 +215,6 @@ main {
     color: white;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
-}
-
-#btn-like {
-    background-color: #f0f0f0;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-/* Estilo do coração curtido com animação */
-#btn-like.curtido {
-    background-color: #e91e63;
-    color: white;
-    animation: pulsar 0.4s ease-in-out;
-    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
-}
-
-@keyframes pulsar {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
 }
 
 .comentario {
@@ -232,48 +223,16 @@ main {
     border-radius: 15px;
     border-left: 6px solid #2e7d32;
     margin-top: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
 }
 
 /* ============================================================
-   7. RODAPÉ (FOOTER)
-   ============================================================ */
-footer {
-    background-color: #2e7d32;
-    color: white;
-    padding: 30px 10px;
-    text-align: center;
-    margin-top: 50px;
-    width: 100%;
-    border-top: 5px solid #9ccc65;
-}
-
-/* ============================================================
-   8. RESPONSIVIDADE (MOBILE)
+   6. RESPONSIVIDADE
    ============================================================ */
 @media (max-width: 1000px) {
-    main {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    aside.fauna, aside.flora {
-        width: 95%;
-        order: 2;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    #detalhes {
-        width: 95%;
-        order: 1;
-        position: static;
-        height: auto;
-        margin: 10px 0;
-    }
-
-    .busca-container {
-        width: 90%;
-    }
+    main { flex-direction: column; align-items: center; }
+    aside.fauna, aside.flora { width: 95%; display: flex; flex-wrap: wrap; gap: 10px; }
+    .card { width: 45%; }
+    #detalhes { width: 95%; position: static; height: auto; }
+    .busca-container { flex-direction: column; padding: 20px; }
 }

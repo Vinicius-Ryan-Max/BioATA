@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BioATA - Biodiversidade de Araçatuba</title>
-    
+
     <link rel="icon" type="image/png" href="imagens/logoBioATA.png">
     
     <link rel="stylesheet" href="Estilo.css">
@@ -14,11 +14,17 @@
 <body>
 
     <header>
-        <div class="busca-container">
+    <div class="busca-container">
+        <div class="logo-wrapper">
+            <img src="imagens/logoBioATA.png" alt="Logo BioATA" class="logo-site">
+        </div>
+        
+        <div class="search-wrapper">
             <input type="text" id="campoBusca" placeholder="Pesquisar espécie (ex: Lobo, Ipê...)" onkeyup="pesquisar()">
             <i class="fas fa-search"></i>
         </div>
-    </header>
+    </div>
+</header>
 
     <main>
         <aside class="fauna">
@@ -57,6 +63,16 @@
             <div class="card" onclick="mostrarBio('tatu')">
                 <img src="imagens/tatu.jpg" alt="Tatu-Galinha">
                 <p class="nome-card">Tatu-Galinha</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('tucano')">
+                <img src="imagens/tucanotoco" alt="Tucano-toco">
+                <p class="nome-card">Tucano-toco</p>
+            </div>
+
+            <div class="card" onclick="mostrarBio('Seriema')">
+                <img src="imagens/seriema.jpg" alt="Seriema">
+                <p class="nome-card">Seriema</p>
             </div>
         </aside>
 
@@ -108,6 +124,14 @@
             <div class="card" onclick="mostrarBio('jacaranda')">
                 <img src="imagens/jacaranda.jpg" alt="Jacarandá">
                 <p class="nome-card">Jacarandá</p>
+            </div>
+            <div class="card" onclick="mostrarBio('jatoba')">
+                <img src="imagens/jatoba.webp" alt="Jatobá">
+                <p class="nome-card">Jatobá</p>
+            </div>
+            <div class="card" onclick="mostrarBio('Aroeira')">
+                <img src="imagens/Aroeira.png" alt="Aroeira-Pimenteira">
+                <p class="nome-card">Aroeira-Pimenteira</p>
             </div>
         </aside>
     </main>

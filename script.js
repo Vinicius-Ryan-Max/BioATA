@@ -62,6 +62,24 @@ const bancoDeDados = {
         onde: "Comum em áreas rurais e matas ciliares da região.",
         curiosidade: "Ele não se enrola como uma bola (quem faz isso é o tatu-bola)."
     },
+    tucano: {
+        titulo: "Tucano-toco",
+        cientifico: "Ramphastos toco",
+        imagem: "tucanotoco",
+        cor: "#8d6e63",
+        desc: "É o maior representante da família dos tucanos. Possui uma plumagem negra marcante e um bico alaranjado vibrante com uma mancha negra na ponta. Em Araçatuba, é comum vê-lo em árvores frutíferas e parques urbanos. Alimenta-se de frutos, insetos e até pequenos ovos.",
+        onde: "Árvores frutíferas no bairro Higienópolis, Parque da Fazenda e áreas com palmeiras perto do Hot Planet.",
+        curiosidade: "O bico do tucano parece pesado, mas é feito de uma estrutura esponjosa de queratina muito leve. Ele funciona como um radiador, ajudando o pássaro a dissipar o calor no sol escaldante de Araçatuba."
+    },
+     Seriema: {
+        titulo: "Seriema",
+        cientifico: "Cariama cristata",
+        imagem: "seriema2.jpg",
+        cor: "#8d6e63",
+        desc: "Ave de pernas longas e canto potente, símbolo do Cerrado. Prefere caminhar pelo solo em áreas abertas.",
+        onde: "Áreas de pastagem na saída para Bilac ou Santo Antônio do Aracanguá, e nas margens da Rodovia Marechal Rondon.",
+        curiosidade: "Ela prefere correr a voar! Pode atingir até 70 km/h em terra. Além disso, ela é uma faxineira natural, pois é famosa por caçar cobras e lagartos."
+    },
     ipeAmarelo: {
         titulo: "Ipê-Amarelo",
         cientifico: "Handroanthus albus",
@@ -124,8 +142,26 @@ const bancoDeDados = {
         desc: "Árvore de porte médio com flores roxas.",
         onde: "Presente em várias praças da cidade.",
         curiosidade: "Originalmente nativo da Argentina e Bolívia."
-    }
-};
+    },
+    jatoba: {
+        titulo: "Jatobá",
+        cientifico: "Hymenaea courbaril",
+        imagem: "jatoba.webp",
+        cor: "#8d6e63",
+        desc: "Árvore majestosa com madeira ultra resistente e frutos de casca dura fundamentais para a fauna.",
+        onde: "Remanescentes de mata nativa na zona rural e em algumas praças antigas da cidade.",
+        curiosidade: "A resina que escorre do seu tronco, após milhões de anos, se transforma em âmbar (aquela pedra preciosa que preserva insetos antigos). O fruto também é conhecido como pão-de-mico por causa da sua polpa farinácea."
+    },
+     Aroeira: {
+        titulo: "Aroeira-Pimenteira",
+        cientifico: "Schinus terebinthifolia",
+        imagem: "Aroeira2.jpg",
+        cor: "#e42929",
+        desc: "Árvore resistente ao calor, com pequenos frutos vermelhos que atraem muita vida silvestre.",
+        onde: "Muito comum na arborização das calçadas do Jardim Planalto, Ipanema e em áreas de reflorestamento perto do Rio Tietê.",
+        curiosidade: "Seus frutos são a famosa Pimenta-Rosa, caríssima na culinária gourmet, mas que aqui em Araçatuba a gente encontra de graça nas calçadas! É a árvore favorita dos pássaros Sanhaço e Sabiá."
+    },
+}   
 
 function mostrarBio(id) {
     const painel = document.getElementById('detalhes');
