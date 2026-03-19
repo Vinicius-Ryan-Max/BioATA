@@ -124,7 +124,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { 
             getFirestore, collection, addDoc, getDocs, doc, 
-            updateDoc, increment, onSnapshot, query, orderBy, setDoc 
+            updateDoc, increment, onSnapshot, query, orderBy, setDoc, where 
         } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -143,7 +143,7 @@
         window.fb = { 
             collection, addDoc, getDocs, doc, updateDoc, 
             increment, onSnapshot, query, orderBy, setDoc,
-            where 
+            where
         };
     </script>
     <script src="script.js"></script>
