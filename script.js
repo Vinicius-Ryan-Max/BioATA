@@ -11,7 +11,7 @@ const bancoDeDados = {
     loboGuara: {
         titulo: "Lobo-guará",
         cientifico: "Chrysocyon brachyurus",
-        imagem: "lobo.webp",
+        imagem: "Lobo-Guara.jpg.webp",
         cor: "#5D4037",
         desc: "É uma espécie de canídeo endêmico da América do Sul.",
         onde: "Áreas rurais e plantações de cana-de-açúcar, ou zonas urbanas próximas a matas.",
