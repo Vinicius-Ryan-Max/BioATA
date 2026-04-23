@@ -17,7 +17,7 @@ const bancoDeDados = {
         onde: "Áreas rurais e plantações de cana-de-açúcar, ou zonas urbanas próximas a matas.",
         curiosidade: "É o maior canídeo da América do Sul e o mais alto do mundo."
     },
-    Tuiuiú: {
+    tuiuiu: {
         titulo: "Tuiuiú",
         cientifico: "Jabiru mycteria",
         imagem: "Tuiuiú.jpg",
@@ -71,7 +71,7 @@ const bancoDeDados = {
         onde: "Árvores frutíferas no bairro Higienópolis, Parque da Fazenda e áreas com palmeiras perto do Hot Planet.",
         curiosidade: "O bico do tucano parece pesado, mas é feito de uma estrutura esponjosa de queratina muito leve. Ele funciona como um radiador, ajudando o pássaro a dissipar o calor no sol escaldante de Araçatuba."
     },
-     Seriema: {
+    seriema: {
         titulo: "Seriema",
         cientifico: "Cariama cristata",
         imagem: "seriema2.jpg",
@@ -152,7 +152,7 @@ const bancoDeDados = {
         onde: "Remanescentes de mata nativa na zona rural e em algumas praças antigas da cidade.",
         curiosidade: "A resina que escorre do seu tronco, após milhões de anos, se transforma em âmbar (aquela pedra preciosa que preserva insetos antigos). O fruto também é conhecido como pão-de-mico por causa da sua polpa farinácea."
     },
-     Aroeira: {
+    aroeira: {
         titulo: "Aroeira-Pimenteira",
         cientifico: "Schinus terebinthifolia",
         imagem: "Aroeira2.jpg",
@@ -166,6 +166,7 @@ const bancoDeDados = {
 function mostrarBio(id) {
     const painel = document.getElementById('detalhes');
     const item = bancoDeDados[id]; 
+    const jaCurtiu = localStorage.getItem(`curtiu_${id}`) ? 'curtido' : '';
 
     painel.innerHTML = `
         <h2 style="color: ${item.cor}; font-size: 45px; margin-bottom: 5px;">${item.titulo}</h2>
@@ -174,23 +175,21 @@ function mostrarBio(id) {
         <img src="imagens/${item.imagem}" style="width: 80%; border-radius: 15px; margin-top: 10px;">
 
         <div class="interacao">
-             <button id="btn-like" onclick="darLike('${id}')">
+             <button id="btn-like" class="${jaCurtiu}" onclick="darLike('${id}')">
                 <span id="icone-coracao">❤</span> <span id="contagem-likes">0</span>
              </button>
         </div>
 
-        <div style="text-align: left; margin-top: 20px;">
+        <div class="bio-info" style="text-align: left; margin-top: 20px; width: 100%; max-width: 600px;">
             <p><strong>Descrição:</strong> ${item.desc}</p>
             <p><strong>Onde encontrar em Araçatuba:</strong> ${item.onde}</p>
             <p><strong>Curiosidade:</strong> ${item.curiosidade}</p>
         </div>
 
-        <div class="secao-comentarios">
-            <h3>Deixe um recado:</h3>
-            <input type="text" id="nome-usuario" placeholder="Seu nome">
-            <textarea id="texto-comentario" placeholder="O que você acha?"></textarea>
-            <button onclick="postarComentario('${id}')">Enviar</button>
-            <div id="lista-comentarios"></div>
+        <div class="acoes-extras" style="margin-top: 30px;">
+            <button onclick="abrirComentarios('${id}')" style="padding: 12px 25px; background: #2e7d32; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold;">
+                <i class="fas fa-comments"></i> Ver Comentários
+            </button>
         </div>
 
         <button id="btn-inicio" onclick="location.reload()" style="display: block; margin: 30px auto; padding: 12px 30px; background-color: white; color: #2e7d32; border: 2px solid #2e7d32; border-radius: 30px; font-weight: bold; cursor: pointer;">Início</button>
@@ -198,6 +197,25 @@ function mostrarBio(id) {
 
     carregarDadosFirebase(id);
     window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function abrirInfo() {
+    document.getElementById('drawer-info').classList.add('active');
+}
+
+function fecharInfo() {
+    document.getElementById('drawer-info').classList.remove('active');
+}
+
+function abrirComentarios(id) {
+    const drawer = document.getElementById('drawer-comentarios');
+    const btnEnviar = document.getElementById('btn-enviar-comentario');
+    btnEnviar.onclick = () => postarComentario(id); // Vincula o ID atual ao botão de envio
+    drawer.classList.add('active');
+}
+
+function fecharComentarios() {
+    document.getElementById('drawer-comentarios').classList.remove('active');
 }
 
 function carregarDadosFirebase(id) {
@@ -221,12 +239,27 @@ function carregarDadosFirebase(id) {
         if (!lista) return;
         lista.innerHTML = "";
         snapshot.forEach((doc) => {
-            let dados = doc.data();
-            lista.innerHTML += `
-                <div class="comentario" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;">
-                    <strong>${dados.nome}:</strong>
-                    <p style="margin: 5px 0 0 0;">${dados.texto}</p>
-                </div>`;
+            const dados = doc.data();
+            const div = document.createElement('div');
+            div.className = "comentario";
+            div.style = "background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 15px; border-left: 5px solid #2e7d32; text-align: left;";
+            
+            const dataFormatada = dados.dataEnvio ? new Date(dados.dataEnvio.seconds * 1000).toLocaleDateString('pt-BR') : "";
+
+            const strong = document.createElement('strong');
+            strong.textContent = `${dados.nome}:`;
+            const spanData = document.createElement('span');
+            spanData.className = "data-comentario";
+            spanData.textContent = dataFormatada;
+            
+            const p = document.createElement('p');
+            p.style.margin = "5px 0 0 0";
+            p.textContent = dados.texto;
+
+            div.appendChild(strong);
+            div.appendChild(spanData);
+            div.appendChild(p);
+            lista.appendChild(div);
         });
     });
 }
@@ -257,14 +290,18 @@ async function postarComentario(id) {
     let texto = document.getElementById('texto-comentario').value;
     if(nome && texto) {
         if (!window.fb) return;
-        await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
-            especieId: id,
-            nome: nome,
-            texto: texto,
-            dataEnvio: new Date()
-        });
-        document.getElementById('nome-usuario').value = "";
-        document.getElementById('texto-comentario').value = "";
+        try {
+            await window.fb.addDoc(window.fb.collection(window.db, "comentarios"), {
+                especieId: id,
+                nome: nome,
+                texto: texto,
+                dataEnvio: new Date()
+            });
+            document.getElementById('nome-usuario').value = "";
+            document.getElementById('texto-comentario').value = "";
+        } catch (e) {
+            alert("Erro ao enviar comentário. Tente novamente mais tarde.");
+        }
     } else {
         alert("Ops! Digite seu nome e uma mensagem antes de enviar.");
     }

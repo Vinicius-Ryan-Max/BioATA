@@ -47,7 +47,7 @@ header {
 }
 
 .logo-site {
-    height: 75px;
+    height: 110px;
     width: auto;
     transition: all 0.3s ease;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
@@ -92,6 +92,28 @@ header {
     pointer-events: none;
 }
 
+#btn-info-portal {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+}
+
+#btn-info-portal:hover {
+    background: #8BC34A;
+    transform: scale(1.1);
+}
+
 /* ============================================================
    3. ESTRUTURA PRINCIPAL (LAYOUT)
    ============================================================ */
@@ -107,6 +129,10 @@ main {
     background-color: #5D4037;
     color: white;
     padding: 20px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
 }
 
 .flora {
@@ -114,6 +140,10 @@ main {
     background-color: #8BC34A;
     color: white;
     padding: 20px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
 }
 
 #detalhes {
@@ -152,7 +182,7 @@ main {
 
 .card img {
     width: 100% !important;
-    height: 150px !important;
+    height: 200px !important;
     object-fit: cover !important;
     border-radius: 15px 15px 0 0;
 }
@@ -182,7 +212,53 @@ main {
 }
 
 /* ============================================================
-   5. TEXTOS E COMENTÁRIOS
+   5. COMPONENTES DE INTERAÇÃO (LIKES E BOTÕES)
+   ============================================================ */
+#btn-like {
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #666;
+}
+
+#btn-like:hover {
+    border-color: #ff5252;
+    color: #ff5252;
+    transform: scale(1.05);
+}
+
+#btn-like.curtido {
+    background-color: #ffebee;
+    border-color: #ff5252;
+    color: #ff5252;
+}
+
+#btn-like.curtido #icone-coracao {
+    animation: pulse 0.4s ease-in-out;
+    color: #ff5252;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+.data-comentario {
+    font-size: 0.8rem;
+    color: #999;
+    margin-left: 10px;
+}
+
+/* ============================================================
+   6. TEXTOS E COMENTÁRIOS
    ============================================================ */
 #detalhes h1 {
     font-size: 38px;
@@ -190,33 +266,6 @@ main {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-
-.secao-comentarios {
-    width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.secao-comentarios input, 
-.secao-comentarios textarea {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-}
-
-.secao-comentarios button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    background-color: #2e7d32;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-}
-
 .comentario {
     background: #f9f9f9;
     padding: 15px;
@@ -227,11 +276,81 @@ main {
 }
 
 /* ============================================================
+   7. GAVETA DE COMENTÁRIOS (DRAWER)
+   ============================================================ */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Escondido fora da tela */
+    width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.drawer.active {
+    right: 0;
+}
+
+.drawer-content h3 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.btn-fechar {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #999;
+}
+
+#form-comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#form-comentario input, #form-comentario textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+#form-comentario button {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ============================================================
    6. RESPONSIVIDADE
    ============================================================ */
 @media (max-width: 1000px) {
     main { flex-direction: column; align-items: center; }
-    aside.fauna, aside.flora { width: 95%; display: flex; flex-wrap: wrap; gap: 10px; }
+    aside.fauna, aside.flora { 
+        width: 95%; 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 10px; 
+        position: static;
+        height: auto;
+        overflow-y: visible;
+    }
     .card { width: 45%; }
     #detalhes { width: 95%; position: static; height: auto; }
     .busca-container { flex-direction: column; padding: 20px; }

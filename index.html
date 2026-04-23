@@ -23,6 +23,10 @@
             <input type="text" id="campoBusca" placeholder="Pesquisar espécie (ex: Lobo, Ipê...)" onkeyup="pesquisar()">
             <i class="fas fa-search"></i>
         </div>
+
+        <button id="btn-info-portal" onclick="abrirInfo()" title="Sobre o BioATA">
+            <i class="fas fa-info-circle"></i>
+        </button>
     </div>
 </header>
 
@@ -40,7 +44,7 @@
                 <p class="nome-card">Lobo-Guará</p>
             </div>
 
-            <div class="card" onclick="mostrarBio('Tuiuiú')">
+            <div class="card" onclick="mostrarBio('tuiuiu')">
                 <img src="imagens/Tuiuiú.jpg" alt="Tuiuiú">
                 <p class="nome-card">Tuiuiú</p>
             </div>
@@ -70,7 +74,7 @@
                 <p class="nome-card">Tucano-toco</p>
             </div>
 
-            <div class="card" onclick="mostrarBio('Seriema')">
+            <div class="card" onclick="mostrarBio('seriema')">
                 <img src="imagens/seriema.jpg" alt="Seriema">
                 <p class="nome-card">Seriema</p>
             </div>
@@ -129,21 +133,47 @@
                 <img src="imagens/jatoba.webp" alt="Jatobá">
                 <p class="nome-card">Jatobá</p>
             </div>
-            <div class="card" onclick="mostrarBio('Aroeira')">
+            <div class="card" onclick="mostrarBio('aroeira')">
                 <img src="imagens/Aroeira.png" alt="Aroeira-Pimenteira">
                 <p class="nome-card">Aroeira-Pimenteira</p>
             </div>
         </aside>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p><strong>BioATA</strong> - Catálogo Digital da Biodiversidade de Araçatuba e Região</p>
-            <p>Desenvolvido por Vinicius Ryan, Lucas Aguiar e Rafael Francisco</p>
-            <div class="social-links">
-                <span>Alunos UNIP Araçatuba</span> | <span>Ciência da Computação 2026</span>
+    <!-- Nova Área de Comentários (Lateral) -->
+    <div id="drawer-comentarios" class="drawer">
+        <div class="drawer-content">
+            <button class="btn-fechar" onclick="fecharComentarios()">&times;</button>
+            <h3><i class="fas fa-comments"></i> Comentários</h3>
+            <div id="form-comentario">
+                <input type="text" id="nome-usuario" placeholder="Seu nome">
+                <textarea id="texto-comentario" placeholder="O que você acha?"></textarea>
+                <button id="btn-enviar-comentario">Enviar</button>
             </div>
+            <div id="lista-comentarios"></div>
         </div>
+    </div>
+
+    <!-- Nova Aba de Informações (Footer Drawer) -->
+    <div id="drawer-info" class="drawer">
+        <div class="drawer-content">
+            <button class="btn-fechar" onclick="fecharInfo()">&times;</button>
+            <h3><i class="fas fa-circle-info"></i> Informações</h3>
+        <div class="footer-content" style="text-align: left; line-height: 1.6; color: #333;">
+            <h4 style="color: #2e7d32; margin-bottom: 10px; font-size: 1.2rem;">O Projeto BioAta</h4>
+            <p style="margin-bottom: 15px;">O BioAta é uma plataforma digital interativa concebida para atuar como o principal catálogo científico e educativo da biodiversidade de Araçatuba e região. Nosso sistema documenta de forma detalhada a fauna e a flora locais, utilizando a tecnologia como ferramenta fundamental para a disseminação de conhecimento e a promoção da preservação ambiental.</p>
+            <p style="margin-bottom: 15px;">Através de uma interface intuitiva, o projeto busca conectar a comunidade acadêmica e a população geral ao patrimônio natural do Noroeste Paulista, reforçando a importância da conservação dos ecossistemas regionais.</p>
+
+            <h4 style="color: #2e7d32; margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem;">Desenvolvimento Acadêmico</h4>
+            <p style="margin-bottom: 15px;">Este sistema é o resultado do trabalho colaborativo de alunos do curso de Ciência da Computação (Turma 2026) da UNIP Araçatuba, unindo competências técnicas em desenvolvimento de software com o compromisso socioambiental.</p>
+
+            <p style="margin-top: 20px;"><strong>Desenvolvido por:</strong> Vinícius Ryan.</p>
+        </div>
+        </div>
+    </div>
+
+    <footer style="padding: 20px; text-align: center; border-top: 1px solid #eee; background: white;">
+        <p style="color: #999; font-size: 14px;">&copy; 2024 BioATA - Araçatuba/SP</p>
     </footer>
 
     <script type="module">
